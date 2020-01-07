@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
  
 @NgModule({
@@ -22,9 +23,10 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule,HttpClientModule
+    AppRoutingModule,FormsModule,HttpClientModule,SnotifyModule
   ],
-  providers: [],
+  providers: [ { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

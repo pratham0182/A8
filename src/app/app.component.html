@@ -1,7 +1,8 @@
 
-<app-header [childVal]="parentVlaue" (setname)="getName()"></app-header>
-<app-sidebar></app-sidebar>
+<app-header  [childVal]="parentVlaue" (setname)="getName()"></app-header>
+<app-sidebar *ngIf="isloggedIn"></app-sidebar>
 <div class="content-wrapper" style="min-height: 1244.06px;">
+    <ng-snotify></ng-snotify>
 <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>

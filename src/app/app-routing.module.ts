@@ -2,11 +2,23 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { BeforeLoginService } from './Services/before-login.service';
+import { AfterLoginService } from './Services/after-login.service';
+import { CanActivate } from '@angular/router';
+
 
 
 const routes: Routes = [
-{path:'dashboard',component:DashboardComponent},
-{path:'login',component:LoginComponent}
+ {
+   path:'dashboard',
+   component:DashboardComponent,
+   canActivate:[AfterLoginService],
+  },
+ {
+   path:'login',
+   component:LoginComponent,
+   canActivate:[BeforeLoginService],
+  }
 ];
 
 @NgModule({
