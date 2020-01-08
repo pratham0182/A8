@@ -10,7 +10,10 @@ export class ApiServiceService {
   private baseUrl = "http://localhost:8000/api";
 
    userLoginAPI(form){
-    
      return this.http.post(`${this.baseUrl}/login`,form);
+   }
+
+   getUsers(){
+    return this.http.get(`${this.baseUrl}/getusers`);
    }
 }

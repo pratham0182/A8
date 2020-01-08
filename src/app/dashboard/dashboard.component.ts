@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiServiceService } from '../Services/api-service.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api:ApiServiceService) { }
 
   ngOnInit() {
+ 
+    const users = this.api.getUsers().subscribe(
+
+      data=>this.handleUsers(data),
+      error=>console.log(error)
+
+    );
+    
+  
+
+  }
+  handleUsers(data){
+      console.log(data.response);
   }
 
 }

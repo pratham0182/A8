@@ -8,8 +8,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { DataTablesModule } from 'angular-datatables';
+import { AuthTokenInterceptor } from './Services/authtoken.interceptor';
 
  
 @NgModule({
@@ -23,10 +25,10 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule,HttpClientModule,SnotifyModule
+    AppRoutingModule,FormsModule,HttpClientModule,SnotifyModule,DataTablesModule
   ],
   providers: [ { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-  SnotifyService],
+  SnotifyService,AuthTokenInterceptor,{provide:HTTP_INTERCEPTORS,useClass:AuthTokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
