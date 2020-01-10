@@ -22,7 +22,27 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
+        <pre>{{users}}</pre>
+        <div class="row">
+           <div class="col-md-12">
+           <table datatable class="row-border hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <th>{{user.id}}</th>
+                  <th>{{user.name}}</th>
+                  <th>{{user.email}}</th>
+                </tr>
+              </tbody>
+            </table>
+           </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

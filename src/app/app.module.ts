@@ -12,6 +12,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import { DataTablesModule } from 'angular-datatables';
 import { AuthTokenInterceptor } from './Services/authtoken.interceptor';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
  
 @NgModule({
@@ -28,7 +29,7 @@ import { AuthTokenInterceptor } from './Services/authtoken.interceptor';
     AppRoutingModule,FormsModule,HttpClientModule,SnotifyModule,DataTablesModule
   ],
   providers: [ { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-  SnotifyService,AuthTokenInterceptor,{provide:HTTP_INTERCEPTORS,useClass:AuthTokenInterceptor,multi:true}],
+  SnotifyService,AuthTokenInterceptor,{provide:HTTP_INTERCEPTORS,useClass:AuthTokenInterceptor,multi:true},{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

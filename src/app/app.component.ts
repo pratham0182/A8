@@ -22,9 +22,7 @@ export class AppComponent {
    }
 
    ngOnInit() {
-
      this.auth.authStatus.subscribe(value=>this.isloggedIn=value);
-
    }
 
 }

@@ -10,6 +10,7 @@ import { ApiServiceService } from '../Services/api-service.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private api:ApiServiceService) { }
+  public users:[];
 
   ngOnInit() {
  
@@ -20,11 +21,11 @@ export class DashboardComponent implements OnInit {
 
     );
     
-  
-
   }
   handleUsers(data){
-      console.log(data.response);
+      this.users=data.response;
+
+      
   }
 
 }

@@ -17,7 +17,8 @@ const routes: Routes = [
    path:'login',
    component:LoginComponent,
    canActivate:[BeforeLoginService],
-  }
+  },
+ { path: 'music', loadChildren: () => import('./music/music.module').then(m => m.MusicModule) }
 ];
 
 @NgModule({

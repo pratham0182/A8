@@ -39,6 +39,7 @@ export class TokenService {
     if(token){
       const payload = this.payload(token);
       if(payload){
+        console.log('payload'+JSON.stringify(payload));
         return (Object.values(this.iss).indexOf(payload.iss)>-1)?true:false;
         //alert((payload.iss==='http://localhost:8000/api/login')?true:false);
       }
